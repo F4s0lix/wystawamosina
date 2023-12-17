@@ -1,0 +1,76 @@
+body{
+    padding: 0px;
+    width: 100%;
+    height: 100vh;
+    margin: 0px;
+    background-color: #669933;
+}
+
+#start{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#startButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    width: 90%;
+    height: 15vh;
+    background-color: #717d85;
+    border-radius: 20px;
+}
+
+img{
+    width: 90%;
+    height: 40vh;
+    margin-top: 3vh;
+}
+
+h3{
+    width: 90%;
+    height: 18vh;
+    text-align: center;
+}
+
+#pytania{
+    display: none;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#przyciski{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#przyciski > button{
+    width: 48%;
+    margin: 1px;
+    height: 15vh;
+    background-color: #717d85;
+}
+
+#wygrana{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    margin-top: 30vh;
+}
+
+#przegrana{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    margin-top: 30vh;
+}
