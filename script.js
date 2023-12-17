@@ -11,7 +11,7 @@ var pytania =
         "Moment, w którym starsze zuchy przechodzą do harcerzy, a harcerze dostają się do starszych metodyk to:"
     ],
     [
-        "Jeśień to:", 
+        "Jesień to:", 
         "Grupę harcerską przeznaczoną dla dzieci między 6, a 10 rokiem życia nazywamy:", 
         "Aby zapisać dziecko do drużyny harcerskiej lub gromady zuchowej należy:"
     ],
