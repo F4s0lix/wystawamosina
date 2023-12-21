@@ -57,6 +57,7 @@ h3{
     margin: 1px;
     height: 15vh;
     background-color: #717d85;
+    font-size: 110%;
 }
 
 #wygrana{
@@ -74,3 +75,8 @@ h3{
     flex-flow: column nowrap;
     margin-top: 30vh;
 }
+
+#przegrana > a{
+    text-decoration: underline;
+    color: black;
+} 
