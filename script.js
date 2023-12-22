@@ -91,10 +91,13 @@ function changeQuestion() /* zmienia pytania dopóki są*/
 {
     if(0 != pytania.length)
     {
+        normalnyWidok();
         let pytanie = pytania.shift();
         let index = losujPytanie(pytanie);
         document.getElementById("pytanie").innerHTML = pytanie[index];
+        zapytano.shift(pytanie[index]);
         let odpowiedzi = odpowiedziDoPytan.shift()[index];
+        odpowiedziZapytania.shift(odpowiedzi);
         document.getElementById("pa").innerHTML = odpowiedzi[0];
         document.getElementById("pb").innerHTML = odpowiedzi[1];
         document.getElementById("pc").innerHTML = odpowiedzi[2];
@@ -117,23 +120,27 @@ function changeQuestion() /* zmienia pytania dopóki są*/
 
 document.getElementById("pa").addEventListener("click", () => 
 {
-    odpowiedziUzytkownika.push(document.getElementById("pa").textContent);
-    changeQuestion();
+    let content = document.getElementById("pa").textContent;
+    odpowiedziUzytkownika.push(content);
+    czyDobrze(content, 'pa');
 });
 document.getElementById("pb").addEventListener("click", () => 
 {
-    odpowiedziUzytkownika.push(document.getElementById("pb").textContent);
-    changeQuestion();
+    let content = document.getElementById("pb").textContent;
+    odpowiedziUzytkownika.push(content);
+    czyDobrze(content, 'pb');
 });
 document.getElementById("pc").addEventListener("click", () => 
 {
-    odpowiedziUzytkownika.push(document.getElementById("pc").textContent);
-    changeQuestion();
+    let content = document.getElementById("pc").textContent;
+    odpowiedziUzytkownika.push(content);
+    czyDobrze(content, 'pc');
 });
 document.getElementById("pd").addEventListener("click", () => 
 {
-    odpowiedziUzytkownika.push(document.getElementById("pd").textContent);
-    changeQuestion();
+    let content = document.getElementById("pd").textContent;
+    odpowiedziUzytkownika.push(content);
+    czyDobrze(content, 'pd');
 });
 
 function odpowiedziSaPoprawne()
@@ -154,4 +161,64 @@ function losujPytanie(zbior)
 {
     const losowyIndex = Math.floor(Math.random() * zbior.length);
     return losowyIndex;
+};
+
+var zapytano = [];
+var odpowiedziZapytania = [];
+
+function czyDobrze(odpowiedz, id)
+{
+    if(odpowiedziPoprawne.includes(odpowiedz))
+    {
+        document.getElementById(id).style.backgroundColor = 'green';
+        document.getElementById(id).disabled = true;
+        document.getElementById(id).style.font = 1;
+        for(let i = 0; i < ids.length; i++)
+        {
+            if(ids[i] != id)
+            {
+                document.getElementById(ids[i]).style.display = 'none';
+            };
+        };
+    }
+    else
+    {
+        document.getElementById(id).style.backgroundColor = 'red';
+        let dobreId = poprawnaOdpowiedz();
+        document.getElementById(dobreId).style.backgroundColor = 'green';
+        document.getElementById(id).disabled = true;
+        document.getElementById(dobreId).disabled = true;
+        for(let i = 0; i < ids.length; i++)
+        {
+            if(ids[i] != id && ids[i] != dobreId)
+            {
+                document.getElementById(ids[i]).style.display = 'none';
+            };
+        };
+    };
+    setTimeout(changeQuestion, 2000);
+};
+
+var ids = ['pa', 'pb', 'pc', 'pd'];
+
+function normalnyWidok()
+{
+    for (let id in ids) {
+        document.getElementById(ids[id]).style.display = 'flex';
+        document.getElementById(ids[id]).style.justifyContent = 'center';
+        document.getElementById(ids[id]).style.alignItems = 'center';
+        document.getElementById(ids[id]).disabled = false;
+        document.getElementById(ids[id]).style.backgroundColor = '#717d85';
+    };
+};
+
+function poprawnaOdpowiedz()
+{
+    for(let i = 0; i < ids.length; i++)
+    {
+        if(odpowiedziPoprawne.includes(document.getElementById(ids[i]).textContent))
+        {
+            return ids[i];
+        };
+    };
 };
