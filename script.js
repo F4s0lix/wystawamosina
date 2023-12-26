@@ -107,13 +107,15 @@ function changeQuestion() /* zmienia pytania dopóki są*/
     else
     {
         document.getElementById("pytania").style.display = "none";
-        if(odpowiedziSaPoprawne())
+        punkty = odpowiedziSaPoprawne();
+        if(5 == punkty)
         {
             document.getElementById("wygrana").style.display = "flex";
         }
         else
         {
             document.getElementById("przegrana").style.display = "flex";
+            document.getElementById("punkty").innerHTML=`Wynik: ${punkty}/5`
         };
     };
 };
@@ -154,7 +156,7 @@ function odpowiedziSaPoprawne()
         };
     };
 
-    return ilePoprawnych == 5;
+    return ilePoprawnych;
 };
 
 function losujPytanie(zbior)
@@ -177,7 +179,7 @@ function czyDobrze(odpowiedz, id)
         {
             if(ids[i] != id)
             {
-                document.getElementById(ids[i]).style.display = 'none';
+                document.getElementById(ids[i]).style.visibility = 'hidden';
             };
         };
     }
@@ -192,7 +194,7 @@ function czyDobrze(odpowiedz, id)
         {
             if(ids[i] != id && ids[i] != dobreId)
             {
-                document.getElementById(ids[i]).style.display = 'none';
+                document.getElementById(ids[i]).style.visibility = 'hidden';
             };
         };
     };
@@ -204,7 +206,7 @@ var ids = ['pa', 'pb', 'pc', 'pd'];
 function normalnyWidok()
 {
     for (let id in ids) {
-        document.getElementById(ids[id]).style.display = 'flex';
+        document.getElementById(ids[id]).style.visibility = 'visible';
         document.getElementById(ids[id]).style.justifyContent = 'center';
         document.getElementById(ids[id]).style.alignItems = 'center';
         document.getElementById(ids[id]).disabled = false;
