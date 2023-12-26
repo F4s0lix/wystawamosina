@@ -60,6 +60,10 @@ h3{
     font-size: 110%;
 }
 
+#przyciski > button:disabled{
+    color: black;
+}
+
 #wygrana{
     display: none;
     justify-content: center;
