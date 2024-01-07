@@ -72,6 +72,10 @@ h3{
     margin-top: 30vh;
 }
 
+#wygrana > h2{
+    text-align: center;
+}
+
 #przegrana{
     display: none;
     justify-content: center;
